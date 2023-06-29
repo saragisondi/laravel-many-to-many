@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::middleware(['auth', 'verified'])
         Route::get('orderBy/{direction}', [ProjectController::class, 'orderBy'])->name('orderBy');
         Route::resource('types', TypeController::class);
         Route::get('typeProject',[ProjectController::class, 'typeProject'])->name('typeProject');
+        Route::resource('technologies', TechnologyController::class);
+
     });
 
 

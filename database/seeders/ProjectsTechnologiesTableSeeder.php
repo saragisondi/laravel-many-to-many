@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Project;
-use App\Models\Technologies;
+use App\Models\Technology;
 
 class ProjectsTechnologiesTableSeeder extends Seeder
 {
@@ -20,10 +20,10 @@ class ProjectsTechnologiesTableSeeder extends Seeder
 
         $project = Project::inRandomOrder()->first();
 
-        $technology_id = Technologies::inRandomOrder()->first()->id;
+        $technology_id = Technology::inRandomOrder()->first()->id;
 
         $project->technologies()->attach($technology_id);
-        dump($$project->technologies);
+        // dump($project->technologies);
       }
     }
 }
