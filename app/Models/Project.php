@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Admin\TechnologyController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -29,7 +30,7 @@ class Project extends Model
 
   //TECHNOLOGY
   public function technologies(){
-    return $this->belongsTo(Technologies::class);
+    return $this->belongsToMany(Technology::class);
   }
 
   // SLUG
