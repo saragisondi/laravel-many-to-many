@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 
 class ProjectController extends Controller
@@ -36,6 +37,11 @@ class ProjectController extends Controller
       return view('admin.projects.typeProject', compact('typologies'));
     }
 
+
+    public function TechnologyProject(){
+      $technology = Technology::all();
+      return view('admin.projects-TechnologyProject', compact('typologies'));
+    }
 
 
     /**

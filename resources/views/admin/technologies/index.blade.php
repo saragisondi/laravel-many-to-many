@@ -1,4 +1,4 @@
-extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -18,7 +18,7 @@ extends('layouts.app')
 
   <div class="w-50">
 
-    <form action="{{route('admin.types.store')}}" method="POST">
+    <form action="" method="POST">
       <div class="mb-3 input-group">
         @csrf
         <input type="text" class="form-control" name="name" placeholder="Nuova Tipologia" aria-label="Nuova Tipologia" aria-describedby="basic-addon2">
@@ -38,7 +38,7 @@ extends('layouts.app')
         </tr>
       </thead>
       <tbody>
-        @foreach ($technologies as $project)
+        {{-- @foreach ($technologies as $project) --}}
           <tr>
             <td>
 
@@ -48,11 +48,11 @@ extends('layouts.app')
                 @csrf
                 @method('PUT')
 
-                <input class="border-0" name="name" value="{{$type->name}}">
+                {{-- <input class="border-0" name="name" value="{{$type->name}}"> --}}
               </form>
             </td>
-
-            <td>{{count($type->projects)}}</td>
+{{--
+            <td>{{count($type->projects)}}</td> --}}
 
             <td>
 
@@ -77,12 +77,12 @@ extends('layouts.app')
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    Sei sicuro di voler eliminare {{ $type->name}}?
+                    {{-- Sei sicuro di voler eliminare {{ $type->name}}? --}}
                   </div>
 
                   {{-- Delete --}}
                   <form
-                    action="{{route('admin.types.destroy', $type)}}"
+                    action=""
                     method="POST">
                       @csrf
                       @method('DELETE')
@@ -101,9 +101,10 @@ extends('layouts.app')
               </div>
             </div>
             </td>
-          </tr>
-          @endforeach
+          {{-- </tr>
+          @endforeach --}}
         </tbody>
       </table>
 
   </div>
+@endsection
