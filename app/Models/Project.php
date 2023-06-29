@@ -27,6 +27,11 @@ class Project extends Model
     return $this->belongsTo(Type::class);
   }
 
+  //TECHNOLOGY
+  public function technologies(){
+    return $this->belongsTo(Technologies::class);
+  }
+
   // SLUG
   public static function generateSlug($str)
   {
