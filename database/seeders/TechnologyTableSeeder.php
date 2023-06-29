@@ -22,7 +22,6 @@ class TechnologyTableSeeder extends Seeder
         $new_technology = new Technologies();
         $new_technology->name = $technology;
         $new_technology->slug = Str::slug($technology, '-');
-        // dump($new_type);
         $new_technology->save();
       }
     }
