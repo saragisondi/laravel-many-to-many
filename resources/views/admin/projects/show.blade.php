@@ -2,11 +2,12 @@
 
 @section('content')
 <div class="container p-5">
-  <div class="d-flex">
+  <div class="text-center d-flex justify-content-center">
 
-    <h2 class="my-4 fs-4 text-secondary">
+    <h2 class="my-4 fs-2 fw-bold text-secondary">
       {{$project->title}}
     </h2>
+
 
     <div class="my-4 d-flex">
       {{-- Edit --}}
@@ -56,23 +57,33 @@
 
 </div>
 
-  <p>{{$date_formatted}}</p>
-  <p class="badge text-bg-primary">{{$project->type?->name}}</p>
-  @forelse ($project->technologies as $technology )
-  <p class="badge text-bg-info">{{$technology->name}}</p>
-  @empty
-  <span>NO TECNOLOGY</span>
-  @endforelse
+<div class="text-center">
 
-  <p>{!!$project->text!!}</p>
-  <div>
-    <img class="w-50" src="{{asset('storage/' . $project->image_path)}}" onerror="this.src='https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg'">
+  <div class="d-flex justify-content-center">
+    <img class=" w-50" src="{{asset('storage/' . $project->image_path)}}" onerror="this.src='https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg'">
   </div>
 
-  <a href="{{route('admin.projects.index')}}" class="my-4 btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left"></i> Elenco Progetti</a>
+  <div class="my-2 fw-bold">Progetto realizzato in:</div>
 
-  <a href="{{route('admin.typeProject')}}" class="mx-4 my-4 btn btn-dark"><i class="fa-solid fa-arrow-rotate-left"></i> Elenco Tipologie/Progetti</a>
+  <p class="px-2 py-2 fs-6 badge text-bg-primary fw-bold">{{$project->type?->name}}</p>
+  @forelse ($project->technologies as $technology )
+  <p class="px-2 py-2 fs-6 badge text-bg-info fw-bold">{{$technology->name}}</p>
+  @empty
+  <span class="fw-bold"> - </span>
+  @endforelse
+</div>
 
+
+<span class="d-flex">
+  Data: <p class="mx-1"> {{ $date_formatted }} </p>
+</span>
+
+<div class="fw-bold">Consegna:</div>
+<p>{!!$project->text!!}</p>
+
+<div class="d-flex justify-content-center">
+  <a href="{{route('admin.projects.index')}}" class="px-4 py-2 my-4 fs-5 btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left"></i> Elenco Progetti</a>
+</div>
 
 </div>
 
