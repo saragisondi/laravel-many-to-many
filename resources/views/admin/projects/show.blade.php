@@ -58,6 +58,12 @@
 
   <p>{{$date_formatted}}</p>
   <p class="badge text-bg-primary">{{$project->type?->name}}</p>
+  @forelse ($project->technologies as $technology )
+  <p class="badge text-bg-info">{{$technology->name}}</p>
+  @empty
+  <span>NO TECNOLOGY</span>
+  @endforelse
+
   <p>{!!$project->text!!}</p>
   <div>
     <img class="w-50" src="{{asset('storage/' . $project->image_path)}}" onerror="this.src='https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg'">
