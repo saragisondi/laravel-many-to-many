@@ -39,8 +39,8 @@ class ProjectController extends Controller
 
 
     public function TechnologyProject(){
-      $technology = Technology::all();
-      return view('admin.projects-TechnologyProject', compact('typologies'));
+      $technologies = Technology::all();
+      return view('admin.projects.TechnologyProject', compact('technologies'));
     }
 
 
@@ -54,6 +54,11 @@ class ProjectController extends Controller
 
       $typologies= Type::all();
       return view('admin.projects.create', compact('project', 'typologies'));
+
+      $technologies = Technology::all();
+      return view('admin.projects.create', compact('technologies'));
+
+
     }
 
     /**
