@@ -53,12 +53,8 @@ class ProjectController extends Controller
     {
 
       $typologies= Type::all();
-      return view('admin.projects.create', compact('project', 'typologies'));
-
       $technologies = Technology::all();
-      return view('admin.projects.create', compact('technologies'));
-
-
+      return view('admin.projects.create', compact('project', 'typologies','technologies' ));
     }
 
     /**
@@ -93,7 +89,12 @@ class ProjectController extends Controller
         $new_project ->fill($form_data);
         $new_project->save();
 
-        //dump($new_project);
+
+        //se ho inviato almeno una tecnologia
+        if(array_key_exists('technologies', $form_data)){
+          $new_project->technologies()->attach($form_data['technologies']);
+        }
+        // dd($form_data['technologies']);
 
         return redirect()->route('admin.projects.show', $new_project);
     }
@@ -121,7 +122,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $typologies= Type::all();
-      return view('admin.projects.edit', compact('project', 'typologies'));
+        $technologies= Technology::all();
+      return view('admin.projects.edit', compact('project', 'typologies', 'technologies'));
     }
 
     /**

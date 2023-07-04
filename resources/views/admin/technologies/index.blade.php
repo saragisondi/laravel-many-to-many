@@ -18,7 +18,7 @@
 
   <div class="w-50">
 
-    <form action="" method="POST">
+    <form action="{{route('admin.technologies.store')}}" method="POST">
       <div class="mb-3 input-group">
         @csrf
         <input type="text" class="form-control" name="name" placeholder="Nuova Tipologia" aria-label="Nuova Tipologia" aria-describedby="basic-addon2">
@@ -38,21 +38,21 @@
         </tr>
       </thead>
       <tbody>
-        {{-- @foreach ($technologies as $project) --}}
+        @foreach ($technologies as $technology)
           <tr>
             <td>
 
-              <form action="#"
+              <form action="{{route('admin.technologies.store')}}"
               method="POST"
               id="edit-form">
                 @csrf
                 @method('PUT')
 
-                {{-- <input class="border-0" name="name" value="{{$type->name}}"> --}}
+                <input class="border-0" name="name" value="{{$technology->name}}">
               </form>
             </td>
-{{--
-            <td>{{count($type->projects)}}</td> --}}
+
+            <td>{{count($technology->projects)}}</td>
 
             <td>
 
@@ -77,12 +77,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    {{-- Sei sicuro di voler eliminare {{ $type->name}}? --}}
+                    sei sicuro di voler eliminare {{ $technology->name}}?
                   </div>
 
                   {{-- Delete --}}
                   <form
-                    action=""
+                    action="{{route('admin.technologies.destroy', $technology)}}"
                     method="POST">
                       @csrf
                       @method('DELETE')
@@ -101,8 +101,8 @@
               </div>
             </div>
             </td>
-          {{-- </tr>
-          @endforeach --}}
+          </tr>
+          @endforeach
         </tbody>
       </table>
 
