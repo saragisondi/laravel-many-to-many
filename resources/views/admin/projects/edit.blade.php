@@ -58,9 +58,13 @@
         autocomplete="off"
         value="{{ $technology->id }}"
         name="technologies[]"
-        @if (in_array($technology->id, old('technologies', [])))
+
+        @if (!$errors->any() && $project?->technologies->contains($technology))
+          checked
+        @elseif(in_array($errors->any() && $technology->id, old('technologies', [])))
           checked
         @endif
+
         >
         <label class="btn btn-outline-primary" for="technology{{ $loop->iteration }}">{{$technology->name}}</label>
       @endforeach
